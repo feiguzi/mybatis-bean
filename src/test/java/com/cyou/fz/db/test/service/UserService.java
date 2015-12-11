@@ -1,7 +1,7 @@
 package com.cyou.fz.db.test.service;
 
 
-import com.cyou.fz.db.mybatis.service.BaseService;
+import com.feiguzi.db.mybatis.service.BaseService;
 import com.cyou.fz.db.test.bean.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

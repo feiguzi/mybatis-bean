@@ -2,9 +2,9 @@ package com.cyou.fz.db.test.bean;
 
 
 
-import com.cyou.fz.db.mybatis.annotations.Id;
-import com.cyou.fz.db.mybatis.annotations.Table;
-import com.cyou.fz.db.mybatis.util.ColumnUtils;
+import com.feiguzi.db.mybatis.annotations.Id;
+import com.feiguzi.db.mybatis.annotations.Table;
+import com.feiguzi.db.mybatis.util.ColumnUtils;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;

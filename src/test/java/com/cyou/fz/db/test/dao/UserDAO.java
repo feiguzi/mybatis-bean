@@ -1,7 +1,7 @@
 package com.cyou.fz.db.test.dao;
 
 
-import com.cyou.fz.db.mybatis.dao.BaseDAO;
+import com.feiguzi.db.mybatis.dao.BaseDAO;
 import com.cyou.fz.db.test.bean.User;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
