@@ -1,11 +1,10 @@
 package com.feiguzi.db.mybatis.util;
 
 import com.feiguzi.db.mybatis.bean.Paged;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.BeansException;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;
@@ -112,29 +111,14 @@ public class ObjectUtil {
      */
     public static Object copyProperties(Object source, Object target) {
         try {
-            BeanUtils.copyProperties(source, target);
-        } catch (BeansException e) {
+            BeanUtils.copyProperties( target ,source);
+        } catch (Exception e) {
             log.debug("ObjectUtil copyProperties bad for src :" + source.toString() + " dest: " + target.toString());
             throw new RuntimeException("ObjectUtil copyProperties bad for src :" + source.toString() + " dest: " + target.toString());
         }
         return target;
     }
-    /**
-     * Bean的copy方法，使用Spring-BeanUtils.copyProperties方法
-     * 若出现转换异常则抛出CommonRuntimeException
-     *
-     * @author jianchen
-     * 2013-6-13
-     */
-    public static Object copyProperties(Object source, Object target,String...ignoreProperties) {
-        try {
-            BeanUtils.copyProperties(source, target,ignoreProperties);
-        } catch (BeansException e) {
-            log.debug("ObjectUtil copyProperties bad for src :" + source.toString() + " dest: " + target.toString());
-            throw new RuntimeException("ObjectUtil copyProperties bad for src :" + source.toString() + " dest: " + target.toString());
-        }
-        return target;
-    }
+
 
     /**
      * 对象那个转换啊 例如:Game -> simpleGame

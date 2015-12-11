@@ -1,9 +1,9 @@
 package com.feiguzi.db.mybatis.util;
 
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -340,26 +340,6 @@ public class ClassUtil {
     }
 
 
-    /**
-     * 提取依赖Bean的id列表
-     * @param list
-     * @param fieldName
-     * @return
-     */
-    public static List<Integer> getRefIdList(List list , String fieldName) {
-        List<Integer> retList = new ArrayList<Integer>();
-        for (Object obj: list) {
-            Integer id  = null;
-            try {
-                id = (Integer) BeanUtils.getPropertyDescriptor(obj.getClass(), fieldName).getReadMethod().invoke(obj);
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-            retList.add(id);
-        }
-        return retList;
-    }
+
 
 }

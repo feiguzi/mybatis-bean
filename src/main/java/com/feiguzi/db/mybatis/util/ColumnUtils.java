@@ -116,14 +116,6 @@ public  final class ColumnUtils {
         return false;
     }
 
-    public static String getColumnName(Class clazz , String property) {
-        for (Field field : getAllFields(clazz)) {
-            if (field.getName().equals(property)) {
-                return getColumnName(field);
-            }
-        }
-        throw new RuntimeException("@id field not find ");
-    }
 
     /**
      * 生成字段名称
