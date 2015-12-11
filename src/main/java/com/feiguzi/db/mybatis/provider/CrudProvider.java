@@ -69,30 +69,13 @@ public class CrudProvider<T> {
 
     public String countBySqlQuery(SqlQuery sqlQuery) {
         String sql = sqlQuery.getSql().toLowerCase();
-
-
-        //去除select xxx 到 from的部分
-        int fromIndex = sql.indexOf("from");
-        if (fromIndex != -1) {
-            sql = sql.substring(fromIndex);
-        }
-        if (StringUtils.isNotEmpty(sqlQuery.getDistinctParam())) {
-            sql = "select count(distinct " + sqlQuery.getDistinctParam() + ")" + sql;
-        } else {
-            sql = "select count(*) " + sql;
-        }
-
-        //去除group部分
-        int groupIndex = sql.indexOf("group by");
-        if (groupIndex != -1) {
-            sql = sql.substring(0, groupIndex);
-        }
-
+        sql = "select count(*) from (" + sql ;
         //去除limit部分
         int limitIndex = sql.indexOf("limit");
         if (limitIndex != -1) {
             sql = sql.substring(0, limitIndex);
         }
+        sql = sql + ") as t";
         sql = addParamPrefix(sql, SqlQuery.PARAMS_FIELD_NAME, sqlQuery.getParams());
         if (logger.isDebugEnabled()) {
             logger.debug("sql is:" + sql);
